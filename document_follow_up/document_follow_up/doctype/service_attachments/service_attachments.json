@@ -1,0 +1,40 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2023-07-04 06:52:56.331288",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "attached_file",
+  "notes"
+ ],
+ "fields": [
+  {
+   "fieldname": "attached_file",
+   "fieldtype": "Attach",
+   "ignore_user_permissions": 1,
+   "in_list_view": 1,
+   "label": "Attached File"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Data",
+   "ignore_user_permissions": 1,
+   "in_list_view": 1,
+   "label": "Notes"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2023-07-04 07:11:16.682484",
+ "modified_by": "Administrator",
+ "module": "Document Follow Up",
+ "name": "Service Attachments",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

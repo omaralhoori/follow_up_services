@@ -1,0 +1,220 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:SVFN-{YYYY}-{#####}",
+ "creation": "2023-06-22 21:06:26.367262",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "service_name",
+  "column_break_08ifp",
+  "service_date",
+  "column_break_4n2r2",
+  "created_by",
+  "section_break_3jz3n",
+  "processing_date",
+  "column_break_bv2jw",
+  "end_processing_date",
+  "section_break_krt3s",
+  "related_entity",
+  "column_break_uwgi1",
+  "sector",
+  "section_break_kfhtd",
+  "client_name",
+  "column_break_6wgzq",
+  "related_client",
+  "section_break_9esez",
+  "topic",
+  "section_break_3nhmw",
+  "finalize_date",
+  "decision",
+  "amended_from"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "service_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Service Name",
+   "options": "Services",
+   "reqd": 1
+  },
+  {
+   "bold": 1,
+   "default": "Today",
+   "fieldname": "finalize_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Finalize Date"
+  },
+  {
+   "fetch_from": "service_name.date",
+   "fieldname": "service_date",
+   "fieldtype": "Date",
+   "label": "Service Date",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.processing_date",
+   "fieldname": "processing_date",
+   "fieldtype": "Date",
+   "label": "Processing Date",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.end_processing_date",
+   "fieldname": "end_processing_date",
+   "fieldtype": "Date",
+   "label": "End Processing Date",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.user_created",
+   "fieldname": "created_by",
+   "fieldtype": "Data",
+   "label": "Created By ",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.related_entity",
+   "fieldname": "related_entity",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Related Entity",
+   "options": "Related Entity",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.sector",
+   "fieldname": "sector",
+   "fieldtype": "Link",
+   "label": "Sector",
+   "options": "Sectors",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.client_name",
+   "fieldname": "client_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Client Name",
+   "options": "Services Clients",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.related_client",
+   "fieldname": "related_client",
+   "fieldtype": "Link",
+   "label": "Related Client",
+   "options": "Services Clients",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.topic",
+   "fieldname": "topic",
+   "fieldtype": "Text Editor",
+   "label": "Topic",
+   "read_only": 1
+  },
+  {
+   "fieldname": "decision",
+   "fieldtype": "Text Editor",
+   "label": "Decision "
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Service Actions Finalize",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Service Actions Finalize",
+   "print_hide": 1,
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_08ifp",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_4n2r2",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_3jz3n",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_krt3s",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_bv2jw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_uwgi1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_kfhtd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_6wgzq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_9esez",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_3nhmw",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2023-06-23 19:41:06.508388",
+ "modified_by": "Administrator",
+ "module": "Document Follow Up",
+ "name": "Service Actions Finalize",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "amend": 1,
+   "cancel": 1,
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

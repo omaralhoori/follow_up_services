@@ -1,0 +1,81 @@
+{
+ "charts": [],
+ "content": "[{\"id\":\"g_aBHRDgKW\",\"type\":\"header\",\"data\":{\"text\":\"<span class=\\\"h4\\\">Reports &amp; Masters</span><br>\",\"col\":12}},{\"id\":\"VdIK4Ei8lx\",\"type\":\"card\",\"data\":{\"card_name\":\"Coding\",\"col\":12}}]",
+ "creation": "2023-06-24 10:49:14.587056",
+ "custom_blocks": [],
+ "docstatus": 0,
+ "doctype": "Workspace",
+ "for_user": "",
+ "hide_custom": 0,
+ "icon": "dialpad",
+ "idx": 0,
+ "is_hidden": 0,
+ "label": "Documents Follow Up",
+ "links": [
+  {
+   "hidden": 0,
+   "is_query_report": 0,
+   "label": "Coding",
+   "link_count": 1,
+   "onboard": 0,
+   "type": "Card Break"
+  },
+  {
+   "hidden": 0,
+   "icon": "/assets/frappe/icons/desk/15.png",
+   "is_query_report": 0,
+   "label": "Related Entity",
+   "link_count": 0,
+   "link_to": "Related Entity",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "icon": "/assets/frappe/icons/desk/16.png",
+   "is_query_report": 0,
+   "label": "Services",
+   "link_count": 0,
+   "link_to": "Services",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "icon": "/assets/frappe/icons/desk/20.png",
+   "is_query_report": 0,
+   "label": "Service Processing",
+   "link_count": 0,
+   "link_to": "Service Processing",
+   "link_type": "DocType",
+   "onboard": 0,
+   "type": "Link"
+  },
+  {
+   "hidden": 0,
+   "icon": "/assets/frappe/icons/desk/25.png",
+   "is_query_report": 1,
+   "label": "Services Report",
+   "link_count": 0,
+   "link_to": "Services Report",
+   "link_type": "Report",
+   "onboard": 0,
+   "type": "Link"
+  }
+ ],
+ "modified": "2023-10-05 10:41:39.158857",
+ "modified_by": "Administrator",
+ "module": "Document Follow Up",
+ "name": "Documents Follow Up",
+ "number_cards": [],
+ "owner": "Administrator",
+ "parent_page": "",
+ "public": 1,
+ "quick_lists": [],
+ "roles": [],
+ "sequence_id": 1.0,
+ "shortcuts": [],
+ "title": "Documents Follow Up"
+}

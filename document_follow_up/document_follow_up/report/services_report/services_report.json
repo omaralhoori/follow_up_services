@@ -1,0 +1,131 @@
+{
+ "add_total_row": 0,
+ "columns": [
+  {
+   "fieldname": "doc_overdue",
+   "fieldtype": "Data",
+   "label": "Record Status",
+   "width": 0
+  },
+  {
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "label": "Client Name",
+   "width": 0
+  },
+  {
+   "fieldname": "client_phone",
+   "fieldtype": "Data",
+   "label": "Client Phone",
+   "width": 0
+  },
+  {
+   "fieldname": "id_number",
+   "fieldtype": "Data",
+   "label": "ID Number",
+   "width": 0
+  },
+  {
+   "fieldname": "related_client",
+   "fieldtype": "Data",
+   "label": "Related Client",
+   "width": 0
+  },
+  {
+   "fieldname": "related_entity",
+   "fieldtype": "Link",
+   "label": "Related Entity",
+   "options": "Related Entity",
+   "width": 0
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivered Date",
+   "width": 0
+  },
+  {
+   "fieldname": "secretary_name",
+   "fieldtype": "Data",
+   "label": "Secretary Name",
+   "width": 0
+  },
+  {
+   "fieldname": "process_finish",
+   "fieldtype": "Data",
+   "label": "Finished Process",
+   "width": 0
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Data",
+   "label": "Note",
+   "width": 0
+  },
+  {
+   "fieldname": "start_process_date",
+   "fieldtype": "Date",
+   "label": "Start Process Date",
+   "options": "",
+   "width": 0
+  },
+  {
+   "fieldname": "end_process_date",
+   "fieldtype": "Date",
+   "label": "End Process Date",
+   "width": 0
+  },
+  {
+   "fieldname": "name",
+   "fieldtype": "Link",
+   "label": "Income Document",
+   "options": "Services",
+   "width": 0
+  },
+  {
+   "fieldname": "service_processing",
+   "fieldtype": "Link",
+   "label": "Issue Document",
+   "options": "Service Processing",
+   "width": 0
+  }
+ ],
+ "creation": "2023-10-04 14:20:02.448522",
+ "disable_prepared_report": 0,
+ "disabled": 0,
+ "docstatus": 0,
+ "doctype": "Report",
+ "filters": [
+  {
+   "fieldname": "process_finish_param",
+   "fieldtype": "Select",
+   "label": "Finished Process",
+   "mandatory": 1,
+   "options": "All\nNo\nYes",
+   "wildcard_filter": 0
+  }
+ ],
+ "idx": 0,
+ "is_standard": "Yes",
+ "modified": "2023-11-22 09:58:03.329754",
+ "modified_by": "Administrator",
+ "module": "Document Follow Up",
+ "name": "Services Report",
+ "owner": "Administrator",
+ "prepared_report": 0,
+ "query": "select \r\nCASE\r\n    WHEN now() > ts.end_process_date   THEN \"Overdue\"\r\n    ELSE \"\"\r\nEND as doc_overdue,\r\nts.client_name,ts.client_phone,ts.id_number,ts.related_client,ts.related_entity,ts.delivery_date,ts.secretary_name,\r\nts.process_finish,tsp.notes,ts.start_process_date,ts.end_process_date,\r\nts.name,ts.service_processing \r\nfrom  `tabServices` as ts left JOIN `tabService Processing` as tsp on ts.name = tsp.service_name \r\nWHERE (ts.process_finish=%(process_finish_param)s or %(process_finish_param)s = \"All\")\r\norder by ts.name desc",
+ "ref_doctype": "Services",
+ "report_name": "Services Report",
+ "report_type": "Query Report",
+ "roles": [
+  {
+   "role": "System Manager"
+  },
+  {
+   "role": "Data Entry"
+  },
+  {
+   "role": "Executors"
+  }
+ ]
+}

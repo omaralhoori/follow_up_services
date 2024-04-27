@@ -1,0 +1,309 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "format:OUT-{YYYY}-{#####}",
+ "creation": "2023-06-22 04:39:14.934595",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "service_name",
+  "column_break_h2ypr",
+  "service_date",
+  "column_break_0pji5",
+  "id_number",
+  "column_break_yod2n",
+  "delivery_date",
+  "section_break_egh0o",
+  "related_entity",
+  "column_break_mlzwr",
+  "client_name",
+  "client_phone",
+  "column_break_nalvx",
+  "related_client",
+  "related_client_phone",
+  "column_break_pqzas",
+  "received_administration",
+  "section_break_9kwsh",
+  "topic",
+  "section_break_i6hfe",
+  "sector",
+  "column_break_5owcn",
+  "start_process_date",
+  "column_break_k85p4",
+  "period",
+  "end_process_date",
+  "column_break_i4aah",
+  "actual_period",
+  "process_finish",
+  "section_break_jolly",
+  "notes",
+  "section_break_yaecn",
+  "service_procedure",
+  "section_break_kkwrs",
+  "decision",
+  "decision_date",
+  "reject_reason",
+  "already_processed",
+  "created_by"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "service_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Service Name",
+   "no_copy": 1,
+   "options": "Services",
+   "reqd": 1,
+   "set_only_once": 1
+  },
+  {
+   "fetch_from": "service_name.date",
+   "fieldname": "service_date",
+   "fieldtype": "Date",
+   "label": "Service Date",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.user_created",
+   "fieldname": "created_by",
+   "fieldtype": "Data",
+   "label": "Created By ",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.related_entity",
+   "fieldname": "related_entity",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Related Entity",
+   "read_only": 1
+  },
+  {
+   "fieldname": "sector",
+   "fieldtype": "Data",
+   "label": "Sector"
+  },
+  {
+   "fetch_from": "service_name.client_name",
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Client Name",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.related_client",
+   "fieldname": "related_client",
+   "fieldtype": "Data",
+   "label": "Related Client",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.topic",
+   "fieldname": "topic",
+   "fieldtype": "Long Text",
+   "label": "Topic",
+   "read_only": 1
+  },
+  {
+   "bold": 1,
+   "fieldname": "start_process_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Start Process Date"
+  },
+  {
+   "description": "Days",
+   "fieldname": "period",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Period",
+   "options": "1\n2\n3\n4\n5\n6\n7\nOther"
+  },
+  {
+   "fieldname": "service_procedure",
+   "fieldtype": "Table",
+   "hidden": 1,
+   "label": "Procedures",
+   "options": "Service Procedure"
+  },
+  {
+   "fieldname": "column_break_h2ypr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_0pji5",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_egh0o",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_mlzwr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_9kwsh",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_i6hfe",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_kkwrs",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "received_administration",
+   "fieldtype": "Data",
+   "label": "Received Administration"
+  },
+  {
+   "fieldname": "section_break_jolly",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "actual_period",
+   "fieldtype": "Int",
+   "hidden": 1,
+   "label": "Actual Period",
+   "mandatory_depends_on": "eval:doc.period == \"Other\"",
+   "read_only_depends_on": "eval:doc.period != \"Other\""
+  },
+  {
+   "fieldname": "column_break_5owcn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_k85p4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "decision",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Decision"
+  },
+  {
+   "fieldname": "reject_reason",
+   "fieldtype": "Small Text",
+   "hidden": 1,
+   "label": "Reject Reason "
+  },
+  {
+   "fieldname": "decision_date",
+   "fieldtype": "Date",
+   "hidden": 1,
+   "label": "Decision Date"
+  },
+  {
+   "fieldname": "column_break_yod2n",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivery Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_pqzas",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_i4aah",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_nalvx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "service_name.service_processing",
+   "fetch_if_empty": 1,
+   "fieldname": "already_processed",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Already Processed"
+  },
+  {
+   "fetch_from": "service_name.id_number",
+   "fieldname": "id_number",
+   "fieldtype": "Data",
+   "label": "ID Number"
+  },
+  {
+   "fetch_from": "service_name.client_phone",
+   "fieldname": "client_phone",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Client Phone"
+  },
+  {
+   "fetch_from": "service_name.related_client_phone",
+   "fieldname": "related_client_phone",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Related Client Phone"
+  },
+  {
+   "fieldname": "end_process_date",
+   "fieldtype": "Date",
+   "label": "End Process Date"
+  },
+  {
+   "default": "No",
+   "fieldname": "process_finish",
+   "fieldtype": "Select",
+   "label": "Process Finished",
+   "options": "No\nYes"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Small Text",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "section_break_yaecn",
+   "fieldtype": "Section Break"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-11-21 13:13:24.820839",
+ "modified_by": "Administrator",
+ "module": "Document Follow Up",
+ "name": "Service Processing",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

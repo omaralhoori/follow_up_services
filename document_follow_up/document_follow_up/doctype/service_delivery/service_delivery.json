@@ -1,0 +1,188 @@
+{
+ "actions": [],
+ "autoname": "format:SVDN-{YYYY}-{#####}",
+ "creation": "2023-06-23 21:29:31.369654",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "service_name",
+  "section_break_pi6eb",
+  "notified",
+  "notified_date",
+  "notified_to",
+  "notified_to_phone",
+  "section_break_kfhtd",
+  "delivered",
+  "delivered_date",
+  "delivered_to",
+  "section_break_kpevr",
+  "client_name",
+  "column_break_6wgzq",
+  "related_client",
+  "section_break_9esez",
+  "topic",
+  "section_break_3nhmw",
+  "decision",
+  "decision_date",
+  "reject_reason"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "fieldname": "service_name",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Service Name",
+   "options": "Services",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "section_break_kfhtd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "service_name.client_name",
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Client Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_6wgzq",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "service_name.related_client",
+   "fieldname": "related_client",
+   "fieldtype": "Data",
+   "label": "Related Client",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_9esez",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "service_name.topic",
+   "fieldname": "topic",
+   "fieldtype": "Long Text",
+   "label": "Topic",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_3nhmw",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "service_name.decision",
+   "fieldname": "decision",
+   "fieldtype": "Data",
+   "label": "Decision ",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "notified",
+   "fieldtype": "Check",
+   "label": "Notified"
+  },
+  {
+   "default": "Today",
+   "depends_on": "eval:doc.notified == \"1\"",
+   "fieldname": "notified_date",
+   "fieldtype": "Date",
+   "label": "Notified Date",
+   "mandatory_depends_on": "eval:doc.notified == \"1\""
+  },
+  {
+   "depends_on": "eval:doc.notified == \"1\"",
+   "fieldname": "notified_to",
+   "fieldtype": "Data",
+   "label": "Notified To",
+   "mandatory_depends_on": "eval:doc.notified == \"1\""
+  },
+  {
+   "depends_on": "eval:doc.notified == \"1\"",
+   "fieldname": "notified_to_phone",
+   "fieldtype": "Data",
+   "label": "Notified To Phone"
+  },
+  {
+   "fieldname": "section_break_pi6eb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "delivered",
+   "fieldtype": "Check",
+   "label": "Delivered"
+  },
+  {
+   "default": "Today",
+   "depends_on": "eval:doc.delivered == \"1\"",
+   "fieldname": "delivered_date",
+   "fieldtype": "Date",
+   "label": "Delivered Date",
+   "mandatory_depends_on": "eval:doc.delivered == \"1\""
+  },
+  {
+   "depends_on": "eval:doc.delivered == \"1\"",
+   "fieldname": "delivered_to",
+   "fieldtype": "Data",
+   "label": "Delivered To",
+   "mandatory_depends_on": "eval:doc.delivered == \"1\""
+  },
+  {
+   "fieldname": "section_break_kpevr",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fetch_from": "service_name.decision_date",
+   "fieldname": "decision_date",
+   "fieldtype": "Date",
+   "label": "Decision Date",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "service_name.reject_reason",
+   "fieldname": "reject_reason",
+   "fieldtype": "Small Text",
+   "label": "Reject Reason",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2023-07-04 17:36:41.305175",
+ "modified_by": "Administrator",
+ "module": "Document Follow Up",
+ "name": "Service Delivery",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}

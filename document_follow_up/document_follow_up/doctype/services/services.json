@@ -1,0 +1,384 @@
+{
+ "actions": [],
+ "allow_auto_repeat": 1,
+ "allow_events_in_timeline": 1,
+ "allow_import": 1,
+ "autoname": "format:IN-{YYYY}-{#####}",
+ "creation": "2023-06-21 20:28:21.554912",
+ "default_view": "List",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "client_name",
+  "column_break_n6lxg",
+  "client_phone",
+  "column_break_kfu54",
+  "client_phone2",
+  "column_break_zi6tr",
+  "id_number",
+  "column_break_psadn",
+  "date",
+  "section_break_wif3x",
+  "topic",
+  "section_break_mwukv",
+  "related_entity",
+  "column_break_l5msg",
+  "notes",
+  "column_break_y2ugc",
+  "related_client",
+  "column_break_l59if",
+  "related_client_phone",
+  "section_break_ojnbd",
+  "service_attachments",
+  "section_break_lwwmu",
+  "sector_mandatory",
+  "executor_secretary",
+  "secretary_name",
+  "column_break_1itps",
+  "sector",
+  "column_break_n0wng",
+  "delivery_date",
+  "section_break_22mdc",
+  "start_process_date",
+  "column_break_bwxfh",
+  "end_process_date",
+  "column_break_hwnrf",
+  "process_finish",
+  "section_break_o6dqy",
+  "decision",
+  "column_break_cnuk4",
+  "decision_date",
+  "column_break_pfvmz",
+  "reject_reason",
+  "notified_date",
+  "notified_to",
+  "column_break_uc85k",
+  "delivered_to",
+  "section_break_davaz",
+  "user_created",
+  "column_break_e657w",
+  "service_status",
+  "column_break_qbacw",
+  "service_processing"
+ ],
+ "fields": [
+  {
+   "bold": 1,
+   "default": "Today",
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Service Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "related_entity",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Related Entity",
+   "options": "Related Entity",
+   "reqd": 1
+  },
+  {
+   "fieldname": "sector",
+   "fieldtype": "Data",
+   "label": "Sector",
+   "mandatory_depends_on": "eval:doc.sector_mandatory == \"1\"",
+   "read_only": 1
+  },
+  {
+   "fieldname": "client_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Client Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "client_phone",
+   "fieldtype": "Data",
+   "label": "Client Phone"
+  },
+  {
+   "fieldname": "related_client",
+   "fieldtype": "Data",
+   "label": "Related Client"
+  },
+  {
+   "fieldname": "related_client_phone",
+   "fieldtype": "Data",
+   "label": "Related Client Phone"
+  },
+  {
+   "fieldname": "topic",
+   "fieldtype": "Small Text",
+   "label": "Topic",
+   "reqd": 1
+  },
+  {
+   "default": "Draft",
+   "fieldname": "service_status",
+   "fieldtype": "Select",
+   "label": "Service Status",
+   "options": "Draft\nOn Process\nDone\nNotified\nDelivered",
+   "read_only": 1
+  },
+  {
+   "default": "User",
+   "fieldname": "user_created",
+   "fieldtype": "Data",
+   "label": "User Created",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_n6lxg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_wif3x",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "section_break_lwwmu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "service_processing",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Service Processing"
+  },
+  {
+   "fieldname": "decision",
+   "fieldtype": "Data",
+   "label": "Decision ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "decision_date",
+   "fieldtype": "Date",
+   "label": "Decision Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "notified_date",
+   "fieldtype": "Data",
+   "label": "Notified Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivered Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_uc85k",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "notified_to",
+   "fieldtype": "Data",
+   "label": "Notified To",
+   "read_only": 1
+  },
+  {
+   "fieldname": "delivered_to",
+   "fieldtype": "Data",
+   "label": "Delivered To",
+   "read_only": 1
+  },
+  {
+   "default": "0",
+   "fetch_from": "related_entity.sector_mandatory",
+   "fieldname": "sector_mandatory",
+   "fieldtype": "Check",
+   "hidden": 1,
+   "label": "Sector Mandatory"
+  },
+  {
+   "fieldname": "service_attachments",
+   "fieldtype": "Table",
+   "label": "Service Attachments",
+   "options": "Service Attachments"
+  },
+  {
+   "fieldname": "executor_secretary",
+   "fieldtype": "Link",
+   "hidden": 1,
+   "label": "Executor Secretary",
+   "options": "User"
+  },
+  {
+   "fieldname": "section_break_mwukv",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_1itps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "executor_secretary.full_name",
+   "fieldname": "secretary_name",
+   "fieldtype": "Data",
+   "label": "Secretary Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_n0wng",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_ojnbd",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "reject_reason",
+   "fieldtype": "Small Text",
+   "label": "Reject Reason ",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_davaz",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_cnuk4",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_pfvmz",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_zi6tr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_y2ugc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "column_break_l59if",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_e657w",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_qbacw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "column_break_l5msg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "notes",
+   "fieldtype": "Data",
+   "label": "Notes"
+  },
+  {
+   "fieldname": "id_number",
+   "fieldtype": "Data",
+   "label": "ID Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_psadn",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_break_o6dqy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "start_process_date",
+   "fieldtype": "Date",
+   "label": "Start Process Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_bwxfh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "end_process_date",
+   "fieldtype": "Date",
+   "label": "End Process Date",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_hwnrf",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "No",
+   "fieldname": "process_finish",
+   "fieldtype": "Select",
+   "label": "Process Finished",
+   "options": "No\nYes",
+   "read_only": 1
+  },
+  {
+   "fieldname": "section_break_22mdc",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "client_phone2",
+   "fieldtype": "Data",
+   "label": "Client Phone2"
+  },
+  {
+   "fieldname": "column_break_kfu54",
+   "fieldtype": "Column Break"
+  }
+ ],
+ "hide_toolbar": 1,
+ "index_web_pages_for_search": 1,
+ "links": [
+  {
+   "link_doctype": "Service Processing",
+   "link_fieldname": "service_name"
+  },
+  {
+   "link_doctype": "Service Actions Finalize",
+   "link_fieldname": "service_name"
+  },
+  {
+   "link_doctype": "Service Delivery",
+   "link_fieldname": "service_name"
+  }
+ ],
+ "make_attachments_public": 1,
+ "modified": "2023-11-07 13:16:44.713777",
+ "modified_by": "Administrator",
+ "module": "Document Follow Up",
+ "name": "Services",
+ "naming_rule": "Expression",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1,
+ "track_seen": 1,
+ "track_views": 1
+}
