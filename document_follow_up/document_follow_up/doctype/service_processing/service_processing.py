@@ -11,7 +11,9 @@ from datetime import date
 class ServiceProcessing(Document):
 	def validate(self):
 		pass 
-
+	@frappe.whitelist()
+	def show_service_procedure(self):
+		return frappe.local.conf.show_service_procedure
 	def before_save(self):
 		self.already_processed = self.name
 		frappe.db.set_value("Services", {"name":self.service_name}, "service_processing",self.name)

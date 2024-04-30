@@ -24,7 +24,10 @@ class Services(Document):
 		#	if status not in ('Draft'):
 		#		frappe.throw(_("The service under processing , Cannot be deleted"))
 
-	def on_submit(self):
+	def create_service_processing(self):
+		if frappe.db.exists("Service Processing", {"service_name": self.name}):
+			return
+		service_processing = None
 		try:
 			service_processing=frappe.get_doc(dict(
 				doctype = 'Service Processing',
@@ -35,11 +38,14 @@ class Services(Document):
 				sector = self.sector,
 				client_name = self.client_name,
 				related_client = self.related_client,
+				delivery_date = frappe.utils.nowdate(),
 				topic = self.topic,
 			)).insert(ignore_permissions=True)
 		except frappe.DuplicateEntryError:
 			# already exists, due to a reinstall?
-			pass
+			service_processing = frappe.get_doc("Service Processing", {
+				"service_name": self.name,
+			})
 		
 		self.service_status='To Process'
 		self.service_processing=service_processing.name
@@ -61,9 +67,13 @@ class Services(Document):
 
 	def update_service_status (self,process = '', cancel=0):
 		if cancel:
-			frappe.db.set_value("Services", {"service_name":self.service_name}, "service_status", 'Draft')
-			frappe.db.set_value("Services", {"service_name":self.service_name}, "service_processing", process)
+			self.db_set("service_status", "Draft")
+			self.db_set("service_processing", process)
+			#frappe.db.set_value("Services", {"service_name":self.name}, "service_status", 'Draft')
+			#frappe.db.set_value("Services", {"service_name":self.name}, "service_processing", process)
 		else:
-			frappe.db.set_value("Services", {"service_name":self.service_name}, "service_status", 'To Process')
-			frappe.db.set_value("Services", {"service_name":self.service_name}, "service_processing", process)
+			# frappe.db.set_value("Services", {"service_name":self.service_name}, "service_status", 'To Process')
+			# frappe.db.set_value("Services", {"service_name":self.service_name}, "service_processing", process)
+			self.db_set("service_status", "To Process")
+			self.db_set("service_processing", process)
 

@@ -23,6 +23,16 @@ frappe.ui.form.on('Service Processing', {
 	onload: function (frm) {
 		//frappe.set_route("Form", 'Service Processing', 'OUT-2023-00021');
 		//frm.set_value("service_name", 'IN-2023-00015');
+		frappe.call(
+			{"method": "show_service_procedure",
+			"doc": frm.doc,
+			"callback": (res) => {
+				if (res.message){
+					frm.set_df_property("service_procedure", "hidden", false);
+				}
+			}
+		}
+		)
 	},
 
 	
