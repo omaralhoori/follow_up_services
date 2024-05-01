@@ -1,7 +1,7 @@
 from document_follow_up.api.upload import upload_data
 import frappe
 from frappe.defaults import get_user_permissions
-
+import json
 
 @frappe.whitelist()
 def get_services(search="", start=0, limit=20):
@@ -50,9 +50,18 @@ def add_service():
 def share_service(service_name):
     service = frappe.get_doc("Services", service_name)
     service.serivce_shared = 1
+    service.save(ignore_permissions=True)
     service.create_service_processing()
     frappe.db.commit()
 
+@frappe.whitelist()
+def set_services_shared():
+    services = frappe.form_dict.services
+    if type(services) != list:
+        services = json.loads(services)
+
+    for service in services:
+        share_service(service)
 # def get_service_request_data(form_data):
 #     return {
 #         ""

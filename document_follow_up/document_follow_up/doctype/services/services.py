@@ -47,7 +47,7 @@ class Services(Document):
 				"service_name": self.name,
 			})
 		
-		self.service_status='To Process'
+		self.service_status='On Process'
 		self.service_processing=service_processing.name
 		self.update_service_status(process=service_processing.name)
 
@@ -74,6 +74,6 @@ class Services(Document):
 		else:
 			# frappe.db.set_value("Services", {"service_name":self.service_name}, "service_status", 'To Process')
 			# frappe.db.set_value("Services", {"service_name":self.service_name}, "service_processing", process)
-			self.db_set("service_status", "To Process")
+			self.db_set("service_status", "On Process")
 			self.db_set("service_processing", process)
 
