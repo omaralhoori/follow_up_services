@@ -4,20 +4,22 @@ from frappe.defaults import get_user_permissions
 import json
 
 @frappe.whitelist()
-def get_services(search="", start=0, limit=20):
+def get_services(search="", start=0, limit=20, finished="No"):
     allowed_entities = get_user_allowed_entities()
+    where_stmt = " and process_finish=%(finished)s" if finished else ""
     services = frappe.db.sql("""
         select * from
             `tabServices`
-        where related_entity in ({allowed_entities}) and name like %(txt)s
+        where related_entity in ({allowed_entities}) and (name like %(txt)s or client_name like %(txt)s) {where_stmt}
         order by creation desc
         limit {start},{limit}
         """.format(
             allowed_entities=",".join([f"'{ent}'" for ent in allowed_entities]),
             limit=limit,
-            start=start
+            start=start,
+            where_stmt=where_stmt
             ),
-        {"txt": "%%%s%%" % search, '_txt': search}, as_dict=True)
+        {"txt": "%%%s%%" % search, '_txt': search, 'finished': finished}, as_dict=True)
     for service in services:
         service['files'] = frappe.db.get_all("Service Attachments", {"parent": service['name']}, ['attached_file', "notes"])
     return services
@@ -71,20 +73,23 @@ def set_services_shared():
 
 
 @frappe.whitelist()
-def get_service_processing(search="", start=0, limit=20):
+def get_service_processing(search="", start=0, limit=20, finished="No"):
     allowed_entities = get_user_allowed_entities()
+    where_stmt = " and process_finish=%(finished)s" if finished else ""
+
     services = frappe.db.sql("""
         select * from
             `tabService Processing`
-        where related_entity in ({allowed_entities}) and name like %(txt)s
+        where related_entity in ({allowed_entities}) and (name like %(txt)s or client_name like %(txt)s) {where_stmt}
         order by creation desc
         limit {start},{limit}
         """.format(
             allowed_entities=",".join([f"'{ent}'" for ent in allowed_entities]),
             limit=limit,
-            start=start
+            start=start,
+            where_stmt=where_stmt
             ),
-        {"txt": "%%%s%%" % search, '_txt': search}, as_dict=True)
+        {"txt": "%%%s%%" % search, '_txt': search, "finished": finished}, as_dict=True)
     for service in services:
         service['procedures'] = frappe.db.get_all("Service Procedure", {"parent": service['name']}, ['name','date', "procedure", "related_entity", "period"])
     return services
