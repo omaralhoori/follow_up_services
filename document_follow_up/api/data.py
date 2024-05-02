@@ -116,10 +116,18 @@ def update_service_processing():
     service_doc = frappe.get_doc("Service Processing", frappe.form_dict.service_processing_name)
     service_doc.update(frappe.form_dict)
     for service_procedure in frappe.form_dict['procedures']:
-        procedure = service_doc.append('procedures')
-        procedure.date = service_procedure['date']
-        procedure.procedure= service_procedure['procedure']
-        procedure.related_entity = service_procedure['related_entity']
+        if service_procedure.get('name'):
+            for prc in service_doc.service_procedure:
+                if prc.name == service_procedure.get('name'):
+                    prc.date = service_procedure['date']
+                    prc.procedure= service_procedure['procedure']
+                    prc.related_entity = service_procedure['related_entity']
+                    break
+        else:
+            procedure = service_doc.append('service_procedure')
+            procedure.date = service_procedure['date']
+            procedure.procedure= service_procedure['procedure']
+            procedure.related_entity = service_procedure['related_entity']
     service_doc.save()
     frappe.db.commit()
     return service_doc.name
