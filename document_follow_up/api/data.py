@@ -110,7 +110,7 @@ def add_service_processing():
 def update_service_processing():
     service_doc = frappe.get_doc("Service Processing", frappe.form_dict.service_processing_name)
     service_doc.update(frappe.form_dict)
-    for service_procedure in service_doc['procedures']:
+    for service_procedure in frappe.form_dict['procedures']:
         procedure = service_doc.append('procedures')
         procedure.date = service_procedure['date']
         procedure.procedure= service_procedure['procedure']
